@@ -420,6 +420,7 @@ void TsdfServer::publishAllUpdatedTsdfVoxels() {
   createDistancePointcloudFromTsdfLayer(tsdf_map_->getTsdfLayer(), &pointcloud);
 
   pointcloud.header.frame_id = world_frame_;
+  pcl_conversions::toPCL(ros::Time::now(), pointcloud.header.stamp);
   tsdf_pointcloud_pub_.publish(pointcloud);
 }
 
